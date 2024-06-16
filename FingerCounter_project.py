@@ -23,7 +23,10 @@ while True:
     vidObject = detector.detectHands(vidObject)
 
     lmList = detector.findPosition(vidObject, draw = False)
-    print(lmList)
+    
+    if len(lmList) != 0:
+        if lmList[8][2] < lmList[6][2]:
+            print("Index finger is up")
 
     currenTime = time.time()
     fps = 1 / (currenTime - previousTime)
