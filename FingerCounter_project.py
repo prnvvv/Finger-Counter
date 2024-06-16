@@ -25,8 +25,11 @@ while True:
     lmList = detector.findPosition(vidObject, draw = False)
     
     if len(lmList) != 0:
-        if lmList[8][2] < lmList[6][2]:
-            print("Index finger is up")
+        ThumbFingerup = (lmList[[4][2] < lmList[3][2]])
+        IndexFingerup = (lmList[8][2] < lmList[6][2])
+        MiddleFingerup = (lmList[12][2] < lmList[10][2])
+        RingFingerup = (lmList[16][2] < lmList[14][2])
+        PinkyFingerup = (lmList[20][2] < lmList[18][2])
 
     currenTime = time.time()
     fps = 1 / (currenTime - previousTime)
