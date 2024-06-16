@@ -9,7 +9,7 @@ while True:
     success, vidObject = capture.read()
 
     if not success:
-        raise Exception("Error: Reading frame was not successful.")
+        break
 
     cv2.imshow("Webcamera", vidObject)
 
