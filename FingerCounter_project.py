@@ -1,5 +1,6 @@
 import cv2
 import time
+import HandTrackerModule as htm
 
 capture = cv2.VideoCapture(0)
 
@@ -11,16 +12,20 @@ if not capture.isOpened():
 
 previousTime = currenTime = 0
 
+detector = htm.HandDetector()
+
 while True:
     success, vidObject = capture.read()
 
     if not success:
         raise Exception("Error: Reading frame was not successful.")
 
+    vidObject = detector.detectHands(vidObject)
+
     currenTime = time.time()
     fps = 1 / (currenTime - previousTime)
     previousTime = currenTime
-    
+
     cv2.imshow("Webcamera", vidObject)
 
     if cv2.waitKey(1) & 0xFF == ord('q'):
