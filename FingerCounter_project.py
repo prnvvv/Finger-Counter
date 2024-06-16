@@ -22,6 +22,9 @@ while True:
 
     vidObject = detector.detectHands(vidObject)
 
+    lmList = detector.findPosition(vidObject, draw = False)
+    print(lmList)
+
     currenTime = time.time()
     fps = 1 / (currenTime - previousTime)
     previousTime = currenTime
