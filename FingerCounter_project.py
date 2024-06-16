@@ -1,22 +1,19 @@
-import HandTrackerModule as htm
 import cv2
-import mediapipe as mp
-import time
 
 capture = cv2.VideoCapture(0)
 
 if not capture.isOpened():
-    raise Exception("Error: Loading not succcessful.")
+    raise Exception("Error: Loading not successful.")
 
 while True:
     success, vidObject = capture.read()
 
     if not success:
-        raise Exception("Error: Loading not succcessful.")
-    
+        raise Exception("Error: Reading frame was not successful.")
+
     cv2.imshow("Webcamera", vidObject)
 
-    if cv2.waitKey(1) & 0xFF == ord("q"):
+    if cv2.waitKey(1) & 0xFF == ord('q'):
         break
 
 capture.release()
