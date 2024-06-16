@@ -16,5 +16,8 @@ while True:
     
     cv2.imshow("Webcamera", vidObject)
 
+    if cv2.waitKey(1) & 0xFF == ord("q"):
+        break
+
 capture.release()
 cv2.destroyAllWindows()
