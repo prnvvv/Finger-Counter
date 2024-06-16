@@ -12,7 +12,9 @@ if not capture.isOpened():
 
 previousTime = currenTime = 0
 
-detector = htm.HandDetector()
+detector = htm.HandDetector(min_detection_confidence = 0.75, min_tracking_confidence = 0.75)
+
+tipID = [4, 8, 12, 16, 20]
 
 while True:
     success, vidObject = capture.read()
@@ -25,11 +27,14 @@ while True:
     lmList = detector.findPosition(vidObject, draw = False)
     
     if len(lmList) != 0:
-        ThumbFingerup = (lmList[[4][2] < lmList[3][2]])
-        IndexFingerup = (lmList[8][2] < lmList[6][2])
-        MiddleFingerup = (lmList[12][2] < lmList[10][2])
-        RingFingerup = (lmList[16][2] < lmList[14][2])
-        PinkyFingerup = (lmList[20][2] < lmList[18][2])
+        fingers = []
+        for id in range(0, 5):
+            if (lmList[tipID[id]][2] < lmList[tipID[id] - 2][2]):
+                fingers.append(1)
+            else:
+                fingers.append(0)
+        
+        print(fingers.count(1))
 
     currenTime = time.time()
     fps = 1 / (currenTime - previousTime)
