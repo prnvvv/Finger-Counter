@@ -11,7 +11,7 @@ if not capture.isOpened():
 
 previousTime = 0
 detector = htm.HandDetector(min_detection_confidence=0.75, min_tracking_confidence=0.75)
-tipID = [8, 12, 16, 20]
+tipID = [4, 8, 12, 16, 20]
 
 while True:
     success, vidObject = capture.read()
@@ -28,9 +28,7 @@ while True:
                 fingers.append(1)
             else:
                 fingers.append(0)
-        if lmList[3][2] < lmList[12][2]:
-            fingers.append(1)
-        
+    
         count = fingers.count(1)
         print(count)
     
