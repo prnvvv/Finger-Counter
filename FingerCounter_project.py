@@ -28,7 +28,9 @@ while True:
                 fingers.append(1)
             else:
                 fingers.append(0)
-        print(fingers.count(1))
+        
+        count = fingers.count(1)
+        print(count)
     
     currentTime = time.time()
     fps = 1 / (currentTime - previousTime)
